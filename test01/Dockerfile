@@ -7,6 +7,5 @@ EXPOSE 8077
 
 ADD /test01/jar/zookeeper-admin-java.jar /jar/zookeeper-admin-java.jar
 
-CMD java -Djava.security.egd=file:/dev/./urandom -jar zookeeper-admin-java.jar  
+CMD java -jar zookeeper-admin-java.jar  
 
-CMD echo "success========================OK"
