@@ -1,14 +1,16 @@
-FROM centos
+FROM anapsix/alpine-java:8_server-jre_unlimited
 MAINTAINER belonghuang<belonghuang@126.com>
-
-ENV MYPATH /usr/local
-WORKDIR $MYPATH
 
 RUN yum -y install vim
 RUN yum -y install net-tools
+RUN yum -y install lsof
 
-EXPOSE 8080
+RUN mkdir -p /jar/
+WORKDIR /jar/
+EXPOSE 8077
 
-CMD echo $MYPATH 
+ADD ./jar/zookeeper-admin-java.jar ./zookeeper-admin-java.jar
+
+CMD java -Djava.security.egd=file:/dev/./urandom -jar zookeeper-admin-java.jar  
+
 CMD echo "success========================OK"
-CMD /bin/bash
